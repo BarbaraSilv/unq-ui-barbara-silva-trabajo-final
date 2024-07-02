@@ -9,42 +9,64 @@ import { useLocation } from 'react-router-dom';
 
 
 
-const Question = () =>{
-    const [questions, setQuestions] = useState([]);
-    const location = useLocation();
-    const { difficulty } = location.state; //
+const Question = () => {
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [result, setResult] = useState(null);
+  const location = useLocation();
+  const { difficulty } = location.state; 
 
-    useEffect(() => {
-        waitTrend();
-    }, []);
+  
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
 
 
-    async function waitTrend() {
-        try {
-            const data = await Service.getQuestions(difficulty);
-            setQuestions(data.data);
-            console.log(Question)
-        } catch (error) {
-            console.error("Error fetching difficulties:", error);
-        }
+  const fetchQuestions = async () => {
+    try {
+      const apiQuestions = await Service.getQuestions(difficulty);
+      setQuestions(apiQuestions.data);
+    } catch (error) {
+      console.error("Error fetching questions:", error);
     }
+  };
 
-    
-    return (
-        <div className="question-container">
-        <h1>Questions for difficulty: {difficulty}</h1>
-        {questions.map((question) => (
-          <div>
-            <p>{question.question}</p>
-            <Answer answers={question}></Answer>
-            
-                
-           
-          </div>
-        ))}
+  const handleAnswer = async (answer) => {
+    const resp = {
+      questionId: questions[currentQuestionIndex].id,
+      option: answer
+    };
+    try {
+      const response = await Service.postAnswer(resp);
+      setResult(response.answer ? "¡Correcto!" : "¡Incorrecto!");
+      setTimeout(() => {
+        setResult(null);
+        setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+      }, 1000);
+    } catch (error) {
+      console.error("Error posting answer:", error);
+    }
+  };
+
+
+  if (!questions.length) {
+    return <div>Loading...</div>;
+  }
+
+  if (currentQuestionIndex >= questions.length) {
+    return <div>¡Completaste todas las preguntas!</div>;
+  }
+
+
+  return (
+    <div className="question-container">
+      {result && <div className="feedback-message">{result}</div>}
+      <div>
+        <p>{questions[currentQuestionIndex].question}</p>
+        <Answer answers={questions[currentQuestionIndex]} onAnswer={handleAnswer} />
       </div>
-   
-    )
+    </div>
+  );
 };
 
 export default Question;

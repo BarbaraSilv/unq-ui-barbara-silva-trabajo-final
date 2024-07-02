@@ -1,0 +1,8 @@
+.question-container {
+    height: 100vh; 
+    background: linear-gradient(to right, #ff5fe7, #850348); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
