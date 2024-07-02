@@ -1,4 +1,3 @@
-import HomeImage from '../../image/preguntados-google-home-2.jpg'
 import './Home.css';
 import { useNavigate } from "react-router";
 

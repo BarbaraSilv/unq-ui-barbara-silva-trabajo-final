@@ -25,7 +25,7 @@ const Difficulty = () => {
     }
 
     const handleDifficultyClick = (diff) => {
-        navigate('/Question', { state: { difficulty: diff } }); // Navega a la nueva página con el estado
+        navigate('/Question', { state: { difficulty: diff } });
       };
 
     return (

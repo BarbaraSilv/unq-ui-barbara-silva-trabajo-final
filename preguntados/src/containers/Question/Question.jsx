@@ -2,14 +2,14 @@ import './Question.css';
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import Answer from '../../components/Question/answer'
-
 import Service from '../../service/Service';
-
 import { useLocation } from 'react-router-dom';
 
 
 
+
 const Question = () => {
+  const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [result, setResult] = useState(null);
@@ -38,7 +38,7 @@ const Question = () => {
     };
     try {
       const response = await Service.postAnswer(resp);
-      setResult(response.answer ? "¡Correcto!" : "¡Incorrecto!");
+      setResult(response.data.answer ? "¡Correcto!" : "¡Incorrecto!");
       setTimeout(() => {
         setResult(null);
         setCurrentQuestionIndex(prevIndex => prevIndex + 1);
@@ -54,7 +54,8 @@ const Question = () => {
   }
 
   if (currentQuestionIndex >= questions.length) {
-    return <div>¡Completaste todas las preguntas!</div>;
+    navigate('/End');
+    return
   }
 
 
