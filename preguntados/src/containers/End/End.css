@@ -10,9 +10,26 @@
     background-position: center;
     background-repeat: no-repeat; 
     align-items:self-end
+}
+.respuesta-correctas{
+    font-size: 30px;
+    color: rgb(255, 0, 208);
+    text-align: center;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 400px;
+    text-shadow: 0px 0px 20px #508AD3;
 
 }
-
+.fin-del-juego {
+    font-size: 50px;
+    color: rgb(255, 0, 208);
+    text-align: center;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 100px;
+    text-shadow: 0px 0px 20px #508AD3;
+}
 button {
     padding: 20px 80px;
     border-radius: 10px;
@@ -32,9 +49,10 @@ button {
   
   button:active {
     background-color: rgb(255, 56, 86);
-    /*50, 168, 80*/
     box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
     transform: translateY(5px);
     transition: 200ms;
   }
+
+  
   
