@@ -6,11 +6,10 @@
     justify-content: center;
     background-size: auto;
     background-image: url('../../image/preguntados-google-home-2.jpg'); 
-    background-size: cover; /* Ajusta el tamaño de la imagen */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    align-items:self-end
-
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    align-items:self-end;
 }
 
 button {
@@ -32,7 +31,6 @@ button {
   
   button:active {
     background-color: rgb(255, 56, 86);
-    /*50, 168, 80*/
     box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
     transform: translateY(5px);
     transition: 200ms;

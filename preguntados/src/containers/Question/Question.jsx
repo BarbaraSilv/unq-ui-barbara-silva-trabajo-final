@@ -1,7 +1,7 @@
 import './Question.css';
 import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
-import Answer from '../../components/Question/answer'
+import Answer from '../../components/Answer/answer'
 import Service from '../../service/Service';
 import { useLocation } from 'react-router-dom';
 
@@ -12,11 +12,11 @@ const Question = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [result, setResult] = useState(null);
   const location = useLocation();
-  const { difficulty } = location.state; 
+  const { difficulty } = location.state;
   const [correctAnswers, setCorrectAnswers] = useState(0);
 
-  
-  
+
+
   useEffect(() => {
     fetchQuestions();
   }, []);
@@ -38,7 +38,7 @@ const Question = () => {
     };
     try {
       const response = await Service.postAnswer(resp);
-      setResult(response.data.answer ? "¡Correcto!" : "¡Incorrecto!");
+      setResult(response.data.answer ? "Correct!" : "Incorrect!");
       setCorrectAnswers(prev => prev + (response.data.answer ? 1 : 0));
       setTimeout(() => {
         setResult(null);
@@ -55,7 +55,7 @@ const Question = () => {
   }
 
   if (currentQuestionIndex >= questions.length) {
-    navigate('/End',{state: {correctAnswers}});
+    navigate('/End', { state: { correctAnswers } });
     return
   }
 
@@ -63,7 +63,7 @@ const Question = () => {
   return (
     <div className="question-container">
       <div className="score">
-        Puntaje: {correctAnswers}
+        Score: {correctAnswers}
       </div>
       {result && <div className="feedback-message">{result}</div>}
       <div>

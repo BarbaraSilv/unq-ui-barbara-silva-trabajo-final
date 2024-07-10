@@ -41,14 +41,14 @@
   
 .buttonDifficulty:active {
   background-color: rgb(255, 56, 149);
-  /*50, 168, 80*/
   box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
   transform: translateY(5px);
   transition: 200ms;
 }
+
 .difficulty-container {
-    height: 100vh; /* Ocupa toda la altura de la ventana */
-    background: linear-gradient(to right, #ff5fe7, #850348); /* Gradiente lineal de izquierda a derecha */
+    height: 100vh;
+    background: linear-gradient(to right, #ff5fe7, #850348);
     justify-content: center;
     flex-direction: column;
  
@@ -82,12 +82,11 @@
 
 .buttonDifficulty:hover {
     box-shadow: rgb(19, 4, 73) 0px 7px 0px 0px;
-  }
+}
   
 .buttonDifficulty:active {
     background-color: rgb(255, 56, 149);
-    /*50, 168, 80*/
     box-shadow: rgb(201, 46, 70) 0px 0px 0px 0px;
     transform: translateY(5px);
     transition: 200ms;
-  }
+}

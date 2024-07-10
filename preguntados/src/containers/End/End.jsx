@@ -10,10 +10,10 @@ const End = () =>{
     
     return (
         <div className='end-container'>
-            <h1 className='fin-del-juego'>Fin del juego</h1>
+            <h1 className='fin-del-juego'>Game over</h1>
             <h2 className='respuesta-correctas'>
-                Respuestas correctas: {correctAnswers}</h2>
-             <button onClick={() => navigate("/difficulty")}>Jugar de nuevo</button>
+                 Correct answers: {correctAnswers}</h2>
+             <button onClick={() => navigate("/difficulty")}>Play again</button>
         </div>
    
     )
